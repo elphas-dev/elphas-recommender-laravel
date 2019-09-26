@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Elphas\\Recommender\\": "packages/elphas/recommender/src"
+            "Elphas\\Recommender\\": "src"
         }
     },
     "extra": {

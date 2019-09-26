@@ -1,0 +1,27 @@
+{
+    "name": "elphas/recommender",
+    "description": "The Elphas recommender is a service for your data. Send in the data, we do some analises and you get back recommendations.",
+    "type": "library",
+    "license": "AGPL-3.0-only",
+    "authors": [
+        {
+            "name": "Gerben Robijn",
+            "email": "gerbenrobijn@alledaags.nl"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.6",
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Elphas\\Recommender\\RecommenderServiceProvider"
+            ],
+            "aliases": {
+                "Recommender": "Elphas\\Recommender\\Facades\\Recommender"
+            }
+        }
+    }
+}

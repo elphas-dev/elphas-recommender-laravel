@@ -20,6 +20,7 @@ Route::get('recommender', function() {
 	$result .= 'Get profiles<a href="/recommender/test/collections/{id}/profiles">(/recommender/test/collections/{id}/profiles)</a><br/>';
 	$result .= 'Get profile by ID <a href="/recommender/test/collections/{collection-id}/profiles/{profile-id}">(/recommender/test/collections/{collection-id}/profiles/{profile-id})</a><br/>';
 	$result .= 'Create profile <a href="/recommender/test/collections/{collection-id}/profiles/create">(/recommender/test/collections/{collection-id}/profiles/create)</a><br/>';
+	$result .= 'Update profile <a href="/recommender/test/collections/{collection-id}/profiles/{profile-id}/patch">(/recommender/test/collections/{collection-id}/profiles/{profile-id}/patch)</a><br/>';
 
 	return $result;
 });
@@ -64,6 +65,14 @@ Route::get('recommender/test/collections/{collectionId}/profiles/create', functi
 
 Route::get('recommender/test/collections/{collectionId}/profiles/{id}', function($collectionId, $id) {
 	return  Recommender::getProfile($collectionId, $id, false, false);
+});
+
+Route::get('recommender/test/collections/{collectionId}/profiles/{id}/patch', function($collectionId, $id) {
+
+	$profile = Recommender::getProfile($collectionId, $id, false, true);
+
+	$profile->items[] = 'blade';
+	return  Recommender::patchProfile($collectionId, $id, $profile);
 });
 
 

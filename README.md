@@ -18,7 +18,7 @@ RECOMMENDER_SECRETKEY=<your-secret-key-here>
 No Api key yet? 
 
 Sign up here: [http://test.developer.elphas.ai](http://test.developer.elphas.ai).  
-Create your first app and enter they keys in the .env file.
+Create your first app and enter the keys in the .env file.
 
 ## What does it do
 Explain here :)
@@ -92,8 +92,6 @@ Recommender::postProfile( $collectionId, $profileWithRef );
 
 __*Get a profile in a collection*__
 
-
-
 ``` php
 Recommender::getProfile( $collectionId, $profileId);
 
@@ -105,9 +103,17 @@ Recommender::getProfile( $collectionId, $referenceId, true);
 
 $profile = Recommender::getProfile( $collectionId, $profileId, false, true);
 
-
 ```
 
+__*Update a profile in a collection*__
+
+``` php
+$profile = Recommender::getProfile( $collectionId, $profileId, false, true);
+
+$profile->items[] = 'blade';
+
+Recommender::patchProfile( $collectionId, $$profileId, $profile)
+```
 
 
 

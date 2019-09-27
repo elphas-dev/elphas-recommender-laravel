@@ -1,5 +1,5 @@
 # Elphas Recommender for Laravel
-The Elphas recommender is a service for your data. Send in the data, we do some analises and you get back recommendations.
+The Elphas recommender is a service for your data. Send in the data, we do some analyses and you get back recommendations.
 
 ## How to install
 
@@ -27,27 +27,27 @@ Explain here :)
 
 ### Collections
 
-*List of your collections*
+__*List of your collections*__
 ``` php
 Recommender::getCollections();
 ```
 
-*Create new collection*
+__*Create new collection*__
 ``` php
 Recommender::postCollection( 'Name of the collection' );
 ```
 
-*Get specific collection by collection ID*
+__*Get specific collection by collection ID*__
 ``` php
 Recommender::getCollection( $collectionId );
 ```
 
-*Change the name of the collection*
+__*Change the name of the collection*__
 ``` php
 Recommender::patchCollection( $collectionId, $name )
 ```
 
-*Delete the collection*  
+__*Delete the collection*__  
 Be carefull with this :)
 ``` php
 Recommender::deleteCollection( $collectionId );
@@ -55,7 +55,7 @@ Recommender::deleteCollection( $collectionId );
 
 ### Items
 
-*Get the unique items in a collection*  
+__*Get the unique items in a collection*__ 
 
 ``` php
 Recommender::getItems( $collectionId );
@@ -63,14 +63,14 @@ Recommender::getItems( $collectionId );
 
 ### Profiles
 
-*Get all profiles of a collection*
+__*Get all profiles of a collection*__
 
 ``` php
 Recommender::getProfiles( $collectionId );
 ```
 
 
-*Create new profile in collection*
+__*Create new profile in a collection*__
 
 ``` php
 $profile = new \Elphas\Recommender\Profile();
@@ -82,11 +82,33 @@ Recommender::postProfile( $collectionId, $profile );
 $profile2 = new \Elphas\Recommender\Profile( null, null, [ 'laravel', 'vue', 'php', 'javascript' ] );
 Recommender::postProfile( $collectionId, $profile2 );
 
-//or with a reference id so that you can match the profile with your system
+```
 
+Supply a reference id so that you can match the profile with your own system
+``` php
 $profileWithRef = new \Elphas\Recommender\Profile( null, $referenceId, [ 'laravel', 'vue', 'php', 'javascript' ] );
 Recommender::postProfile( $collectionId, $profileWithRef );
 ```
+
+__*Get a profile in a collection*__
+
+
+
+``` php
+Recommender::getProfile( $collectionId, $profileId);
+
+//by your reference ID
+
+Recommender::getProfile( $collectionId, $referenceId, true);
+
+//as an Elphas Profile instance
+
+$profile = Recommender::getProfile( $collectionId, $profileId, false, true);
+
+
+```
+
+
 
 
 ### Suggestions

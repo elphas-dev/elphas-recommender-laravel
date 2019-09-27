@@ -68,7 +68,7 @@ Based on a couple of profiles we can supply your profile with recommendation. Ba
 }
  ``` 
 
-You could use different strategies to get recommendations. [Read more about strategies](README.md/Recommendations)
+You could use different strategies to get recommendations. [Read more about strategies](#Recommendations)
 
 
 ## How does it work?

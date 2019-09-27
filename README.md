@@ -48,7 +48,7 @@ Recommender::patchCollection( $collectionId, $name )
 ```
 
 __*Delete the collection*__  
-Be carefull with this :)
+Be careful with this :)
 ``` php
 Recommender::deleteCollection( $collectionId );
 ```
@@ -112,15 +112,69 @@ $profile = Recommender::getProfile( $collectionId, $profileId, false, true);
 
 $profile->items[] = 'blade';
 
-Recommender::patchProfile( $collectionId, $$profileId, $profile)
+Recommender::patchProfile( $collectionId, $profileId, $profile)
 ```
 
+__*Delete a profile in a collection*__
+Again be careful with this.
+
+``` php
+Recommender::deleteProfile( $collectionId, $profileId)
+
+//or by referenceID
+
+Recommender::deleteProfile( $collectionId, $referenceId, true)
+```
+
+### Recommendations
+Once a collection has been filled with profiles and items we can do a recommendation for a profile, based on the other profiles in the collection.
+
+``` php
+Recommender::recommend( $collectionId, $profileId)
+```
+
+Recommendations can be done with three strategies: __*augment*__, __*recommend*__ or __*all*__.
+
+The default strategy for getting a recommendation is the __*recommend*__ strategy.
+The __*recommend*__ strategy compares profiles with each other.
+
+The __*augment*__ strategy checks which unique items belong together and how many times this happens.
+
+The __*all*__ strategy combines the strategies. The result will returned per strategy.
 
 
-### Suggestions
 
+``` php
 
-## Examples
+Recommender::recommend( $collectionId, $profileId, 'recommend' )
+
+//or
+
+Recommender::recommend( $collectionId, $profileId, 'augment' )
+
+//or 
+
+Recommender::recommend( $collectionId, $profileId, 'all' )
+
+```
+
+When using the __*augment*__ strategy you will be able to supply a minimal quality setting between 0 and 1.  
+The higher the quality the more strict a recommendation will be.
+
+``` php
+Recommender::recommend( $collectionId, $profileId, 'augment', 0.7 )
+```
+
+There is an option to limit the number of recommendations. The default is *10*:
+``` php
+Recommender::recommend( $collectionId, $profileId, 'augment', 0.7, 5 )
+```
+
+Recommendations based on your own referenceID is also possible:
+``` php
+Recommender::recommend( $collectionId, $referenceId, 'augment', 0.7, 5, true )
+```
+
 
 
 

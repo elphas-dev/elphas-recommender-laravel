@@ -21,6 +21,7 @@ Route::get('recommender', function() {
 	$result .= 'Get profile by ID <a href="/recommender/test/collections/{collection-id}/profiles/{profile-id}">(/recommender/test/collections/{collection-id}/profiles/{profile-id})</a><br/>';
 	$result .= 'Create profile <a href="/recommender/test/collections/{collection-id}/profiles/create">(/recommender/test/collections/{collection-id}/profiles/create)</a><br/>';
 	$result .= 'Update profile <a href="/recommender/test/collections/{collection-id}/profiles/{profile-id}/patch">(/recommender/test/collections/{collection-id}/profiles/{profile-id}/patch)</a><br/>';
+	$result .= 'Delete profile <a href="/recommender/test/collections/{collection-id}/profiles/{profile-id}/delete">(/recommender/test/collections/{collection-id}/profiles/{profile-id}/delete)</a><br/>';
 
 	return $result;
 });
@@ -73,6 +74,10 @@ Route::get('recommender/test/collections/{collectionId}/profiles/{id}/patch', fu
 
 	$profile->items[] = 'blade';
 	return  Recommender::patchProfile($collectionId, $id, $profile);
+});
+
+Route::get('recommender/test/collections/{collectionId}/profiles/{id}/delete', function($collectionId, $id) {
+	return  Recommender::deleteProfile($collectionId, $id);
 });
 
 

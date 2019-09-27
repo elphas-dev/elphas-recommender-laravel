@@ -225,22 +225,21 @@ class Recommender
 	}
 
 	/**
-	 *
-	 * From the collection and profile it will provide a suggestion which item could be added to the profile based on other profiles in the collection.
-	 *
 	 * @param $collectionId
 	 * @param $profileid
-	 * @param array $query This is an example: ['ref'=>0,'strategy'=>'recommend', 'limit'=>'', 'quality'=>''].
+	 * @param string $strategy Use 'augment' or 'recommend'.
+	 * @param int $quality Only used when strategy is 'augment'. Number between 0 and 1
+	 * @param int $limit
+	 * @param bool $byRef
 	 * @return array|mixed
-	 *
 	 */
-	public function suggest($collectionId, $profileid, $query = []){
-		$queryString = '';
-		if(!empty($query)){
-			$queryString = '?' . http_build_query($query, null, '&');
-		}
+	public function recommend($collectionId, $profileid, $strategy = "augment", $quality = 0, $limit = 10,  $byRef = false){
+		$queryString = '?strategy='.$strategy;
+		$queryString .= '&limit='.$limit;
+		$queryString .= '&quality='.$quality;
+		$queryString .= '&ref='. $byRef?1:0;
 
-		return Recommender::call('GET', 'collections/' .$collectionId .'/profiles/' .$profileid .'/suggest' .$queryString);
+		return Recommender::call('GET', 'collections/' .$collectionId .'/profiles/' .$profileid .'/recommend' .$queryString);
 	}
 
 

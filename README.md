@@ -1,6 +1,11 @@
 # Elphas Recommender for Laravel
 The Elphas recommender is a recommendation service for your data. Send in the data, we do some analyses and you get back recommendations.
 
+[How to install](#how-to-install)  
+[What does it do](#what-does-it-do)  
+[How to use](#how-to-use)
+
+
 ## How to install
 
 Go to your Laravel project where you would like to use Elphas Recommender and 
@@ -71,7 +76,7 @@ Based on a couple of profiles we can supply your profile with recommendation. Ba
 You could use different strategies to get recommendations. [Read more about strategies](#Recommendations)
 
 
-## How does it work?
+## How to use
 
 ### Collections
 
@@ -226,17 +231,5 @@ Recommender::recommend( $collectionId, $referenceId, 'augment', 0.7, 5, true )
 
 
 ## Support
-
 Email us at dev@alledaags.nl 
-
-
-
-
-
-
-
-
-
-
-
 	

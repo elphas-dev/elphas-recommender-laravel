@@ -23,6 +23,8 @@ Route::get('recommender', function() {
 	$result .= 'Update profile <a href="/recommender/test/collections/{collection-id}/profiles/{profile-id}/patch">(/recommender/test/collections/{collection-id}/profiles/{profile-id}/patch)</a><br/>';
 	$result .= 'Delete profile <a href="/recommender/test/collections/{collection-id}/profiles/{profile-id}/delete">(/recommender/test/collections/{collection-id}/profiles/{profile-id}/delete)</a><br/>';
 
+	$result .= 'Recommendations <a href="/recommender/test/collections/{collection-id}/profiles/{profile-id}/recommend">(/recommender/test/collections/{collection-id}/profiles/{profile-id}/recommend)</a><br/>';
+
 	return $result;
 });
 
@@ -78,6 +80,10 @@ Route::get('recommender/test/collections/{collectionId}/profiles/{id}/patch', fu
 
 Route::get('recommender/test/collections/{collectionId}/profiles/{id}/delete', function($collectionId, $id) {
 	return  Recommender::deleteProfile($collectionId, $id);
+});
+
+Route::get('recommender/test/collections/{collectionId}/profiles/{id}/recommend', function($collectionId, $id) {
+	return  Recommender::recommend($collectionId, $id, 'all');
 });
 
 

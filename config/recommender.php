@@ -16,6 +16,6 @@ return [
 	/*
    *  The Secret key of your Elphas Recommender app.
    */
-	'baseUri' =>  env('RECOMMENDER_BASE_URL', 'http://recommender.test.alledaags.net/api/v1/'),
+	'baseUri' =>  env('RECOMMENDER_BASE_URL', 'https://recommender.elphas.ai/api/v1/'),
 
 ];

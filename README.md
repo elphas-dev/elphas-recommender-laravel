@@ -45,7 +45,7 @@ A profile would look something like this:
 		"html5",
 		"java"
 	],
-	"reference_id":1 //this is an ID that perhaps matches an ID in your system for easier loopups later on
+	"reference_id":1 //this is an ID that perhaps matches an ID in your system for easier lookups later on
 }
  ```
 
